@@ -5,8 +5,8 @@ info:
   description: API for reading, creating, and updating memory chunks in Niat.
 
 servers:
-  - url: http://localhost:5000
-    description: Local development server
+  - url: https://niat.fly.dev
+    description: Niat production server
 
 paths:
   /chunks:
