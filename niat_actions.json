@@ -1,1 +1,18 @@
+{
+  "schema_version": "v1",
+  "name_for_model": "niat_memory",
+  "name_for_human": "Niat Memory API",
+  "description_for_model": "API för att lagra, läsa och uppdatera chunk-filer för minneshantering.",
+  "description_for_human": "Hanterar chunks med lokalt minne, som GPT kan skapa, redigera och läsa.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://raw.githubusercontent.com/staffantastiskafantasmer/niat-memory/main/niat_openapi.yaml"
+  },
+  "logo_url": "https://raw.githubusercontent.com/staffantastiskafantasmer/niat-memory/main/logo.png",
+  "contact_email": "staff@example.com",
+  "legal_info_url": "https://example.com/legal"
+}
 
