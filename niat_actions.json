@@ -1,9 +1,9 @@
 {
   "schema_version": "v1",
-  "name_for_model": "niat_memory",
   "name_for_human": "Niat Memory",
-  "description_for_model": "Läs, skapa eller uppdatera chunk-filer i Niat-minnet.",
-  "description_for_human": "Hantera lokala minnesfiler i Niat. Skapa, visa och uppdatera chunks.",
+  "name_for_model": "niat_memory",
+  "description_for_human": "Läser och skriver AI-minnesfiler",
+  "description_for_model": "Access and manage memory chunks for Niat project.",
   "auth": {
     "type": "none"
   },
@@ -11,7 +11,7 @@
     "type": "openapi",
     "url": "https://raw.githubusercontent.com/staffantastiskafantasmer/niat-memory/main/niat_openapi.yaml"
   },
-  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Memory_icon.svg/240px-Memory_icon.svg.png",
-  "contact_email": "niat@fantasmers.org",
-  "legal_info_url": "https://github.com/staffantastiskafantasmer/niat-memory"
+  "logo_url": "https://em-content.zobj.net/source/microsoft/365/memo_1f4dd.png",
+  "contact_email": "niat@fantasm.xyz",
+  "legal_info_url": "https://fantasm.xyz/legal"
 }
