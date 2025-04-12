@@ -5,7 +5,7 @@ info:
   description: API for storing and retrieving memory entries in Niat.
 
 servers:
-  - url: "https://975f-85-227-131-220.ngrok-free.app"
+  - url: "https://e102-85-227-131-220.ngrok-free.app"
     description: Niat temporary ngrok server
 
 paths:
