@@ -5,7 +5,7 @@ info:
   description: API for storing and retrieving memory entries in Niat.
 
 servers:
-  - url: https://14b2-85-227-131-220.ngrok-free.app
+  - url: https://975f-85-227-131-220.ngrok-free.app
     description: Ngrok tunnel to local Flask server
 
 paths:
