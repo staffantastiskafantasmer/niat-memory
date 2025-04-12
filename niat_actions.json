@@ -1,17 +1,17 @@
 {
-  "schema_version": "v1",
-  "name_for_human": "Niat Memory",
-  "name_for_model": "niat_memory",
-  "description_for_human": "Läser och skriver AI-minnesfiler",
-  "description_for_model": "Access and manage memory chunks for Niat project.",
-  "auth": {
-    "type": "none"
-  },
-  "api": {
-    "type": "openapi",
+  "openapi_spec": {
     "url": "https://raw.githubusercontent.com/staffantastiskafantasmer/niat-memory/main/niat_openapi.yaml"
   },
-  "logo_url": "https://em-content.zobj.net/source/microsoft/365/memo_1f4dd.png",
-  "contact_email": "niat@fantasm.xyz",
-  "legal_info_url": "https://fantasm.xyz/legal"
+  "actions": [
+    {
+      "name": "getMemory",
+      "description": "Hämta det lagrade minnet från Niat.",
+      "operation_id": "getMemory"
+    },
+    {
+      "name": "storeMemory",
+      "description": "Spara en ny minnespost i Niat.",
+      "operation_id": "storeMemory"
+    }
+  ]
 }
