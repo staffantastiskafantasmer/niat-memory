@@ -2,17 +2,17 @@ openapi: 3.1.0
 info:
   title: Niat Memory
   version: 1.0.0
-  description: API for reading, creating, and updating memory chunks in Niat.
+  description: API for storing and retrieving memory entries in Niat.
 
 servers:
-  - url: https://niat.fly.dev
-    description: Niat production server
+  - url: https://14b2-85-227-131-220.ngrok-free.app
+    description: Ngrok tunnel to local Flask server
 
 paths:
   /chunks:
     get:
-      summary: List all chunk files
       operationId: listChunks
+      summary: List all memory chunks
       responses:
         '200':
           description: A list of chunk filenames
@@ -22,10 +22,9 @@ paths:
                 type: array
                 items:
                   type: string
-
     post:
-      summary: Create a new chunk
       operationId: createChunk
+      summary: Create a new memory chunk
       requestBody:
         required: true
         content:
@@ -42,34 +41,31 @@ paths:
                 - content
       responses:
         '200':
-          description: Chunk created successfully
+          description: Chunk successfully created
 
   /chunks/{filename}:
     get:
-      summary: Get the content of a chunk
       operationId: getChunk
+      summary: Retrieve memory chunk content
       parameters:
-        - in: path
-          name: filename
+        - name: filename
+          in: path
           required: true
           schema:
             type: string
       responses:
         '200':
-          description: Chunk content
+          description: The content of the chunk
           content:
             text/plain:
               schema:
                 type: string
-        '404':
-          description: Chunk not found
-
     put:
-      summary: Update the content of a chunk
       operationId: updateChunk
+      summary: Update memory chunk content
       parameters:
-        - in: path
-          name: filename
+        - name: filename
+          in: path
           required: true
           schema:
             type: string
@@ -86,6 +82,4 @@ paths:
                 - content
       responses:
         '200':
-          description: Chunk updated successfully
-        '404':
-          description: Chunk not found
+          description: Chunk updated
