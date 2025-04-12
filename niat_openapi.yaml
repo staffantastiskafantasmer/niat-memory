@@ -1,44 +1,57 @@
 openapi: "3.1.0"
 info:
+  version: 1.0.0
   title: Niat Memory API
-  version: "1.0.0"
-  description: API for storing and retrieving memory entries in Niat.
-
+  description: API för att lagra och hämta minnesdata i Niat.
+  license:
+    name: MIT
 servers:
-  - url: "https://e102-85-227-131-220.ngrok-free.app"
-    description: Niat temporary ngrok server
-
+  - url: https://e102-85-227-131-220.ngrok-free.app
 paths:
   /memory:
     get:
+      summary: Hämta minne
       operationId: getMemory
-      summary: Get stored memory
-      description: Retrieves the current stored memory from the service.
+      tags:
+        - memory
       responses:
         '200':
-          description: Memory retrieved
+          description: Nuvarande lagrat minne
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  memory:
-                    type: string
+                $ref: "#/components/schemas/MemoryResponse"
     post:
+      summary: Spara nytt minne
       operationId: storeMemory
-      summary: Store new memory
-      description: Stores a new memory string into the service.
+      tags:
+        - memory
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                memory:
-                  type: string
-              required:
-                - memory
+              $ref: "#/components/schemas/MemoryRequest"
       responses:
         '200':
-          description: Memory stored successfully
+          description: Minnet sparades
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MemoryResponse"
+components:
+  schemas:
+    MemoryRequest:
+      type: object
+      required:
+        - memory
+      properties:
+        memory:
+          type: string
+    MemoryResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: string
