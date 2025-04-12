@@ -6,14 +6,16 @@ info:
 servers:
   - url: https://975f-85-227-131-220.ngrok-free.app
     description: Niat live tunnel via ngrok
+
 paths:
   /chunks:
     get:
       operationId: listChunks
       summary: List all chunks
+      description: Returns a list of all chunk filenames.
       responses:
         '200':
-          description: A list of chunk filenames
+          description: A list of filenames
           content:
             application/json:
               schema:
@@ -22,7 +24,8 @@ paths:
                   type: string
     post:
       operationId: createChunk
-      summary: Create a new chunk
+      summary: Create a new memory chunk
+      description: Create a new text chunk file in the memory store.
       requestBody:
         required: true
         content:
@@ -39,11 +42,31 @@ paths:
                 - content
       responses:
         '200':
-          description: Chunk created
+          description: The chunk was successfully created.
+
   /chunks/{filename}:
+    get:
+      operationId: getChunk
+      summary: Retrieve a chunk
+      description: Get the content of a specific chunk by filename.
+      parameters:
+        - name: filename
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The chunk content
+          content:
+            text/plain:
+              schema:
+                type: string
+
     put:
       operationId: updateChunk
       summary: Update an existing chunk
+      description: Replace the content of an existing chunk file.
       parameters:
         - name: filename
           in: path
@@ -63,20 +86,4 @@ paths:
                 - content
       responses:
         '200':
-          description: Chunk updated
-    get:
-      operationId: getChunk
-      summary: Get chunk content
-      parameters:
-        - name: filename
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Chunk content
-          content:
-            text/plain:
-              schema:
-                type: string
+          description: Chunk was updated
