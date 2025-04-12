@@ -1,20 +1,21 @@
-openapi: 3.0.1
+openapi: 3.1.0
 info:
-  title: Niat Memory API
-  description: API för att skapa, läsa och uppdatera chunks som GPT kan hantera som minne.
-  version: "1.0"
+  title: Niat Memory
+  version: 1.0.0
+  description: API for reading, creating, and updating memory chunks in Niat.
 
 servers:
   - url: http://localhost:5000
+    description: Local development server
 
 paths:
   /chunks:
     get:
+      summary: List all chunk files
       operationId: listChunks
-      summary: Lista alla chunks
       responses:
         '200':
-          description: Filnamn på alla chunks
+          description: A list of chunk filenames
           content:
             application/json:
               schema:
@@ -23,57 +24,68 @@ paths:
                   type: string
 
     post:
+      summary: Create a new chunk
       operationId: createChunk
-      summary: Skapa en ny chunk
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [filename, content]
               properties:
                 filename:
                   type: string
                 content:
                   type: string
+              required:
+                - filename
+                - content
       responses:
         '200':
-          description: Chunk skapad
+          description: Chunk created successfully
 
   /chunks/{filename}:
-    parameters:
-      - name: filename
-        in: path
-        required: true
-        schema:
-          type: string
-
     get:
+      summary: Get the content of a chunk
       operationId: getChunk
-      summary: Hämta innehåll i en chunk
+      parameters:
+        - in: path
+          name: filename
+          required: true
+          schema:
+            type: string
       responses:
         '200':
-          description: Innehåll i chunken
+          description: Chunk content
           content:
             text/plain:
               schema:
                 type: string
+        '404':
+          description: Chunk not found
 
     put:
+      summary: Update the content of a chunk
       operationId: updateChunk
-      summary: Uppdatera en chunk
+      parameters:
+        - in: path
+          name: filename
+          required: true
+          schema:
+            type: string
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [content]
               properties:
                 content:
                   type: string
+              required:
+                - content
       responses:
         '200':
-          description: Chunk uppdaterad
-
+          description: Chunk updated successfully
+        '404':
+          description: Chunk not found
