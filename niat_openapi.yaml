@@ -6,7 +6,7 @@ info:
   license:
     name: MIT
 servers:
-  - url: https://e102-85-227-131-220.ngrok-free.app
+  - url: https://27a6-85-227-131-220.ngrok-free.app
 paths:
   /memory:
     get:
