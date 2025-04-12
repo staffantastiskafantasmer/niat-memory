@@ -1,1 +1,79 @@
+openapi: 3.0.1
+info:
+  title: Niat Memory API
+  description: API för att skapa, läsa och uppdatera chunks som GPT kan hantera som minne.
+  version: "1.0"
+
+servers:
+  - url: http://localhost:5000
+
+paths:
+  /chunks:
+    get:
+      operationId: listChunks
+      summary: Lista alla chunks
+      responses:
+        '200':
+          description: Filnamn på alla chunks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+
+    post:
+      operationId: createChunk
+      summary: Skapa en ny chunk
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [filename, content]
+              properties:
+                filename:
+                  type: string
+                content:
+                  type: string
+      responses:
+        '200':
+          description: Chunk skapad
+
+  /chunks/{filename}:
+    parameters:
+      - name: filename
+        in: path
+        required: true
+        schema:
+          type: string
+
+    get:
+      operationId: getChunk
+      summary: Hämta innehåll i en chunk
+      responses:
+        '200':
+          description: Innehåll i chunken
+          content:
+            text/plain:
+              schema:
+                type: string
+
+    put:
+      operationId: updateChunk
+      summary: Uppdatera en chunk
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [content]
+              properties:
+                content:
+                  type: string
+      responses:
+        '200':
+          description: Chunk uppdaterad
 
